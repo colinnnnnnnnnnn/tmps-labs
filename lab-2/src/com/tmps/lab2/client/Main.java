@@ -23,9 +23,34 @@ import com.tmps.lab2.proxy.StandardOrderFulfillmentService;
 
 import java.util.EnumSet;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // If explicit --demo flag is provided, run automated showcase immediately
+        if (args.length > 0 && (args[0].equalsIgnoreCase("--demo") || args[0].equalsIgnoreCase("-d") || args[0].equalsIgnoreCase("--automated"))) {
+            runFullDemonstration();
+            return;
+        }
+
+        // If stdin is interactive (or has user input), launch the Interactive CLI
+        Scanner scanner = new Scanner(System.in);
+        try {
+            // Check if there is interactive input available
+            if (System.console() != null || System.in.available() > 0) {
+                InteractiveCli cli = new InteractiveCli(scanner);
+                cli.start();
+                return;
+            }
+        } catch (Exception ignored) {
+            // Fall back to automated demo on environments where interactive stream is not supported
+        }
+
+        // Default: If no console or piped input without terminal, run the full demonstration
+        runFullDemonstration();
+    }
+
+    public static void runFullDemonstration() {
         System.out.println("================================================================================");
         System.out.println("   TMPS Laboratory Work 2: Structural Design Patterns Demonstration");
         System.out.println("             Domain: Vintage Groove Records (Music Store)");

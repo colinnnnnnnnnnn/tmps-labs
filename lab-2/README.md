@@ -51,11 +51,24 @@ lab-2/
 
 ## How to Build and Run
 
-### 1. Run the Interactive Demonstration
-Execute the demo using the provided shell script:
+### 1. Run the Interactive CLI or Automated Demonstration
+Execute the application using the provided shell script:
 ```bash
 ./run.sh
 ```
+This launches the **Interactive Terminal POS System**, where you can:
+- Browse single vinyl records and box sets (**Composite Pattern**).
+- Build your own custom box sets interactively with custom discounts (**Composite Pattern**).
+- Attach value-added services: ultrasonic cleaning, transit insurance, gift wrap (**Decorator Pattern**).
+- Switch login roles between Guest, Customer, Staff, and Admin (**Proxy Pattern**).
+- Checkout and dispatch orders through the unified orchestration pipeline (**Facade Pattern**).
+- Inspect the live security audit trail (**Proxy Pattern**).
+
+To run the **Automated Showcase Demonstration** directly without typing:
+```bash
+./run.sh --demo
+```
+
 Or manually using `javac` and `java`:
 ```bash
 mkdir -p out/production/lab-2
